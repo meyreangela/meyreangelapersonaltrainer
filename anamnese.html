@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anamnese • Consultoria Meyre</title>
+<meta name="description" content="Ficha de anamnese da consultoria fitness da Meyre. Preencha para receber seu treino personalizado." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#1A1320;--ink-soft:#5C5363;--bg:#FFFBF8;--surface:#FFF1EC;
+  --line:#EFE3DC;--accent:#FF4E73;--accent-2:#FF8A5B;--plum:#241A2E;
+  --grad:linear-gradient(120deg,#FF4E73 0%,#FF8A5B 100%);
+  --radius:18px;--shadow:0 18px 50px -20px rgba(36,26,46,.35);
+  --shadow-sm:0 8px 24px -14px rgba(36,26,46,.3);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.1;letter-spacing:-.01em}
+a{color:var(--accent)}
+.wrap{max-width:780px;margin:0 auto;padding:0 22px}
+
+/* topo */
+.topbar{background:var(--plum);color:#fff;padding:18px 0}
+.topbar .wrap{display:flex;align-items:center;gap:11px}
+.mark{width:38px;height:38px;border-radius:11px;background:var(--grad);display:grid;place-items:center;color:#fff;font-family:'Fraunces',serif;font-size:1.25rem;box-shadow:0 8px 18px -8px rgba(255,78,115,.8)}
+.topbar b{font-weight:800;font-size:1.1rem;letter-spacing:-.02em}
+.topbar small{display:block;font-size:.62rem;font-weight:600;letter-spacing:.22em;color:rgba(255,255,255,.6);text-transform:uppercase;margin-top:-2px}
+
+/* cabeçalho do form */
+.intro{text-align:center;padding:56px 0 10px}
+.intro .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.intro .eyebrow::before,.intro .eyebrow::after{content:"";width:24px;height:2px;background:var(--grad);border-radius:2px}
+.intro h1{font-size:clamp(2rem,5vw,2.9rem);margin:16px 0 12px}
+.intro p{color:var(--ink-soft);max-width:520px;margin:0 auto;font-size:1.05rem}
+
+/* form */
+form{padding:30px 0 70px}
+.section{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px;margin-bottom:22px;box-shadow:var(--shadow-sm)}
+.section-head{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.section-head .nb{width:40px;height:40px;flex:none;border-radius:11px;background:var(--surface);color:var(--accent);display:grid;place-items:center;font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600}
+.section-head h2{font-size:1.4rem}
+.section-head p{font-size:.85rem;color:var(--ink-soft);margin-top:2px}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:7px;margin-bottom:18px}
+.field.full{grid-column:1/-1}
+.grid .field{margin-bottom:0}
+label{font-weight:600;font-size:.92rem}
+label .req{color:var(--accent)}
+.hint{font-size:.8rem;color:var(--ink-soft);font-weight:400}
+input[type=text],input[type=tel],input[type=email],input[type=number],input[type=date],select,textarea{
+  font-family:inherit;font-size:.98rem;color:var(--ink);background:var(--bg);
+  border:1.5px solid var(--line);border-radius:12px;padding:13px 15px;width:100%;transition:border-color .2s,box-shadow .2s;
+}
+textarea{resize:vertical;min-height:88px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(255,78,115,.12)}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235C5363' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:42px}
+
+/* chips (radio/checkbox em pílulas) */
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.chip span{display:inline-block;padding:10px 16px;border:1.5px solid var(--line);border-radius:100px;font-size:.9rem;font-weight:600;color:var(--ink-soft);cursor:pointer;transition:.18s;user-select:none}
+.chip input:checked+span{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 8px 18px -10px rgba(255,78,115,.8)}
+.chip input:focus-visible+span{box-shadow:0 0 0 4px rgba(255,78,115,.18)}
+
+/* PAR-Q linhas sim/não */
+.parq{display:flex;flex-direction:column;gap:6px}
+.parq-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px dashed var(--line)}
+.parq-row:last-child{border-bottom:none}
+.parq-row .q{font-size:.94rem;font-weight:500}
+.parq-opts{display:flex;gap:8px;flex:none}
+
+/* termo */
+.consent{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border-radius:12px;padding:16px}
+.consent input{margin-top:3px;width:20px;height:20px;accent-color:var(--accent);flex:none}
+.consent label{font-weight:500;font-size:.9rem;color:var(--ink-soft)}
+
+/* botão */
+.submit-wrap{text-align:center;margin-top:8px}
+.btn-send{display:inline-flex;align-items:center;gap:11px;font-weight:700;font-size:1.05rem;color:#fff;background:#28C76F;border:none;border-radius:100px;padding:17px 36px;cursor:pointer;box-shadow:0 14px 30px -10px rgba(40,199,111,.7);transition:transform .25s}
+.btn-send:hover{transform:translateY(-3px)}
+.btn-send svg{width:24px;height:24px}
+.note{font-size:.85rem;color:var(--ink-soft);margin-top:16px;max-width:440px;margin-left:auto;margin-right:auto}
+
+footer{background:var(--plum);color:rgba(255,255,255,.6);text-align:center;padding:30px 0;font-size:.85rem}
+
+@media(max-width:640px){
+  .grid{grid-template-columns:1fr}
+  .section{padding:24px 18px}
+  .parq-row{flex-direction:column;align-items:flex-start;gap:10px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="mark">M</span>
+    <span><b>Meyre</b><small>Consultoria Fitness</small></span>
+  </div>
+</div>
+
+<div class="intro">
+  <div class="wrap">
+    <span class="eyebrow">Ficha de Anamnese</span>
+    <h1>Vamos te conhecer melhor</h1>
+    <p>Preencha com calma e sinceridade. Quanto mais detalhes, mais personalizado e seguro será o seu treino. Leva uns 5 minutinhos. 💪</p>
+  </div>
+</div>
+
+<form id="anamnese" class="wrap" novalidate>
+
+  <!-- 1. DADOS PESSOAIS -->
+  <div class="section">
+    <div class="section-head"><div class="nb">1</div><div><h2>Dados pessoais</h2><p>Pra eu saber com quem estou falando.</p></div></div>
+    <div class="grid">
+      <div class="field full"><label>Nome completo <span class="req">*</span></label><input type="text" name="Nome" required></div>
+      <div class="field"><label>Data de nascimento <span class="req">*</span></label><input type="date" name="Data de nascimento" required></div>
+      <div class="field"><label>WhatsApp <span class="req">*</span></label><input type="tel" name="WhatsApp" placeholder="(34) 99999-9999" required></div>
+      <div class="field"><label>E-mail</label><input type="email" name="E-mail" placeholder="seu@email.com"></div>
+      <div class="field"><label>Cidade / Estado</label><input type="text" name="Cidade/UF" placeholder="Uberlândia / MG"></div>
+      <div class="field"><label>Profissão</label><input type="text" name="Profissão"></div>
+      <div class="field"><label>Peso atual (kg) <span class="req">*</span></label><input type="number" name="Peso (kg)" step="0.1" required></div>
+      <div class="field"><label>Altura (cm) <span class="req">*</span></label><input type="number" name="Altura (cm)" required></div>
+      <div class="field full"><label>Sexo</label>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="Sexo" value="Feminino"><span>Feminino</span></label>
+          <label class="chip"><input type="radio" name="Sexo" value="Masculino"><span>Masculino</span></label>
+          <label class="chip"><input type="radio" name="Sexo" value="Prefiro não informar"><span>Prefiro não informar</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. OBJETIVO -->
+  <div class="section">
+    <div class="section-head"><div class="nb">2</div><div><h2>Seu objetivo</h2><p>O que te trouxe até aqui.</p></div></div>
+    <div class="field full"><label>Objetivo principal <span class="req">*</span></label>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="Objetivo principal" value="Emagrecimento" required><span>Emagrecimento</span></label>
+        <label class="chip"><input type="radio" name="Objetivo principal" value="Ganho de massa muscular"><span>Ganho de massa</span></label>
+        <label class="chip"><input type="radio" name="Objetivo principal" value="Definição muscular"><span>Definição</span></label>
+        <label class="chip"><input type="radio" name="Objetivo principal" value="Condicionamento e saúde"><span>Saúde / condicionamento</span></label>
+        <label class="chip"><input type="radio" name="Objetivo principal" value="Melhora de desempenho"><span>Desempenho</span></label>
+        <label class="chip"><input type="radio" name="Objetivo principal" value="Reabilitação / dor"><span>Reabilitação / dor</span></label>
+        <label class="chip"><input type="radio" name="Objetivo principal" value="Qualidade de vida"><span>Qualidade de vida</span></label>
+      </div>
+    </div>
+    <div class="field full"><label>O que te motivou a buscar a consultoria? <span class="hint">(seja sincera, isso me ajuda muito)</span></label><textarea name="Motivação"></textarea></div>
+  </div>
+
+  <!-- 3. HISTÓRICO -->
+  <div class="section">
+    <div class="section-head"><div class="nb">3</div><div><h2>Histórico de treino</h2><p>De onde você está partindo.</p></div></div>
+    <div class="field full"><label>Você já praticou exercício físico? <span class="req">*</span></label>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="Experiência" value="Nunca pratiquei" required><span>Nunca pratiquei</span></label>
+        <label class="chip"><input type="radio" name="Experiência" value="Já pratiquei, mas parei"><span>Já pratiquei, mas parei</span></label>
+        <label class="chip"><input type="radio" name="Experiência" value="Pratico atualmente"><span>Pratico atualmente</span></label>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="field"><label>Seu nível</label>
+        <select name="Nível">
+          <option value="">Selecione...</option>
+          <option>Iniciante</option><option>Intermediário</option><option>Avançado</option>
+        </select>
+      </div>
+      <div class="field"><label>Há quanto tempo está parada? <span class="hint">(se aplicável)</span></label><input type="text" name="Tempo parado" placeholder="Ex: 6 meses"></div>
+    </div>
+    <div class="field full"><label>Quais modalidades já praticou?</label><input type="text" name="Modalidades anteriores" placeholder="Ex: musculação, pilates, corrida..."></div>
+  </div>
+
+  <!-- 4. ROTINA E ESTRUTURA -->
+  <div class="section">
+    <div class="section-head"><div class="nb">4</div><div><h2>Rotina e estrutura</h2><p>Pra montar um treino que cabe na sua vida.</p></div></div>
+    <div class="field full"><label>Quantos dias por semana você pode treinar? <span class="req">*</span></label>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="Dias por semana" value="1 a 2 dias" required><span>1–2 dias</span></label>
+        <label class="chip"><input type="radio" name="Dias por semana" value="3 a 4 dias"><span>3–4 dias</span></label>
+        <label class="chip"><input type="radio" name="Dias por semana" value="5 a 6 dias"><span>5–6 dias</span></label>
+      </div>
+    </div>
+    <div class="field full"><label>Tempo disponível por treino</label>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="Tempo por treino" value="Até 30 min"><span>Até 30 min</span></label>
+        <label class="chip"><input type="radio" name="Tempo por treino" value="45 min"><span>45 min</span></label>
+        <label class="chip"><input type="radio" name="Tempo por treino" value="1 hora"><span>1 hora</span></label>
+        <label class="chip"><input type="radio" name="Tempo por treino" value="Mais de 1 hora"><span>+1 hora</span></label>
+      </div>
+    </div>
+    <div class="field full"><label>Onde você vai treinar? <span class="hint">(pode marcar mais de um)</span></label>
+      <div class="chips">
+        <label class="chip"><input type="checkbox" name="Local de treino" value="Academia"><span>Academia</span></label>
+        <label class="chip"><input type="checkbox" name="Local de treino" value="Em casa"><span>Em casa</span></label>
+        <label class="chip"><input type="checkbox" name="Local de treino" value="Condomínio"><span>Condomínio</span></label>
+        <label class="chip"><input type="checkbox" name="Local de treino" value="Ar livre"><span>Ar livre</span></label>
+      </div>
+    </div>
+    <div class="field full"><label>Quais equipamentos você tem disponível?</label><textarea name="Equipamentos" placeholder="Ex: halteres, elásticos, academia completa, nenhum..."></textarea></div>
+  </div>
+
+  <!-- 5. SAÚDE (PAR-Q) -->
+  <div class="section">
+    <div class="section-head"><div class="nb">5</div><div><h2>Saúde (PAR-Q)</h2><p>Questionário de prontidão. Sua segurança vem em primeiro lugar.</p></div></div>
+    <div class="parq" id="parq">
+      <!-- as linhas são geradas via JS -->
+    </div>
+    <div class="field full" style="margin-top:22px"><label>Se respondeu SIM a algo acima, descreva (qual lesão, cirurgia, dor, etc.):</label><textarea name="Detalhes de saúde"></textarea></div>
+    <div class="field full"><label>Usa algum medicamento contínuo? Qual?</label><input type="text" name="Medicamentos"></div>
+  </div>
+
+  <!-- 6. HÁBITOS -->
+  <div class="section">
+    <div class="section-head"><div class="nb">6</div><div><h2>Hábitos de vida</h2><p>O treino é só uma parte — seu dia a dia conta muito.</p></div></div>
+    <div class="grid">
+      <div class="field"><label>Como está seu sono?</label>
+        <select name="Sono"><option value="">Selecione...</option><option>Ruim</option><option>Regular</option><option>Bom</option></select>
+      </div>
+      <div class="field"><label>Horas de sono por noite</label><input type="text" name="Horas de sono" placeholder="Ex: 7h"></div>
+      <div class="field"><label>Como é sua alimentação?</label>
+        <select name="Alimentação"><option value="">Selecione...</option><option>Ruim</option><option>Regular</option><option>Boa</option><option>Acompanhada por nutricionista</option></select>
+      </div>
+      <div class="field"><label>Água por dia (litros)</label><input type="text" name="Hidratação" placeholder="Ex: 2L"></div>
+      <div class="field"><label>Nível de estresse</label>
+        <select name="Estresse"><option value="">Selecione...</option><option>Baixo</option><option>Médio</option><option>Alto</option></select>
+      </div>
+      <div class="field"><label>Consome bebida alcoólica?</label>
+        <select name="Álcool"><option value="">Selecione...</option><option>Não</option><option>Socialmente</option><option>Frequentemente</option></select>
+      </div>
+    </div>
+    <div class="field full" style="margin-top:18px"><label>Como é seu dia a dia?</label>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="Rotina diária" value="Sedentário (sentado a maior parte do dia)"><span>Sedentário</span></label>
+        <label class="chip"><input type="radio" name="Rotina diária" value="Moderadamente ativo"><span>Moderadamente ativo</span></label>
+        <label class="chip"><input type="radio" name="Rotina diária" value="Ativo (em pé / movimento o dia todo)"><span>Ativo</span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. OBSERVAÇÕES -->
+  <div class="section">
+    <div class="section-head"><div class="nb">7</div><div><h2>Quase lá!</h2><p>Algo mais que eu precise saber?</p></div></div>
+    <div class="field full"><label>Observações livres</label><textarea name="Observações" placeholder="Preferências, medos, restrições de horário, qualquer coisa..."></textarea></div>
+    <div class="consent">
+      <input type="checkbox" id="consent" required>
+      <label for="consent">Declaro que as informações acima são verdadeiras e estou ciente de que devo procurar um médico em caso de qualquer condição de saúde que impeça a prática de atividade física.</label>
+    </div>
+  </div>
+
+  <div class="submit-wrap">
+    <button type="submit" class="btn-send">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.3-.9-2.8-1.2-4.5-4-4.7-4.2-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.4-.3.6-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.2.1.4.1.6-.1l.7-.9c.2-.2.3-.2.6-.1l1.9.9c.3.1.5.2.5.4.1.2.1.7-.1 1.2Z"/></svg>
+      Enviar para a Meyre
+    </button>
+    <p class="note">Ao enviar, suas respostas abrem direto no WhatsApp da Meyre. É só tocar em "enviar" na conversa. 😊</p>
+  </div>
+</form>
+
+<footer>© 2026 Meyre Consultoria Fitness • Ficha de anamnese</footer>
+
+<script>
+// ⬅ EDITAR: número do WhatsApp que vai RECEBER as anamneses (55 + DDD + número)
+const WHATSAPP = "5534998914319";
+
+// Perguntas do PAR-Q (padrão de mercado) — geradas dinamicamente
+const PARQ = [
+  "Tem ou já teve algum problema cardíaco?",
+  "Sente dores no peito ao praticar atividade física?",
+  "Tem pressão alta ou faz tratamento para isso?",
+  "Tem diabetes?",
+  "Tem alguma lesão (articular, óssea ou muscular)?",
+  "Já passou por alguma cirurgia?",
+  "Sente dor ou desconforto em alguma região do corpo?",
+  "Tem alguma restrição médica para se exercitar?",
+  "Está grávida ou em período pós-parto?",
+  "É fumante?"
+];
+const parqBox = document.getElementById('parq');
+PARQ.forEach((q,i)=>{
+  const name = "PARQ "+(i+1)+". "+q;
+  parqBox.insertAdjacentHTML('beforeend',`
+    <div class="parq-row">
+      <span class="q">${q}</span>
+      <div class="parq-opts">
+        <label class="chip"><input type="radio" name="${name}" value="Sim"><span>Sim</span></label>
+        <label class="chip"><input type="radio" name="${name}" value="Não"><span>Não</span></label>
+      </div>
+    </div>`);
+});
+
+// Envio -> monta mensagem e abre WhatsApp
+const form = document.getElementById('anamnese');
+form.addEventListener('submit',(e)=>{
+  e.preventDefault();
+  if(!form.checkValidity()){ form.reportValidity(); return; }
+
+  const fd = new FormData(form);
+  const seen = new Set();
+  let msg = "*NOVA ANAMNESE — Consultoria Meyre*\n\n";
+
+  for(const key of fd.keys()){
+    if(seen.has(key)) continue;
+    seen.add(key);
+    const values = fd.getAll(key).filter(v=>v!=="");
+    if(values.length===0) continue;
+    msg += "*"+key+":* "+values.join(", ")+"\n";
+  }
+  msg += "\n_Enviado pelo formulário de anamnese._";
+
+  const url = "https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg);
+  window.open(url,"_blank");
+});
+</script>
+</body>
+</html>
