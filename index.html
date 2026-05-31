@@ -55,7 +55,7 @@ img{max-width:100%;display:block}
 /* ===== Botões ===== */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  font-weight:700;font-size:.98rem;line-height:1.1;white-space:nowrap;
+  font-weight:700;font-size:.98rem;line-height:1.1;
   padding:15px 26px;border-radius:100px;
   transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
   cursor:pointer;border:none;
@@ -117,17 +117,17 @@ body.nav-open{overflow:hidden}
 /* foto hero */
 .hero-photo{
   position:relative;border-radius:32px;overflow:hidden;aspect-ratio:4/5;
-  background:radial-gradient(120% 92% at 50% 0%, #FFFFFF 0%, #FFE7DE 42%, #FFCBBE 100%);
+  background:linear-gradient(158deg,#FF8559 0%,#FF4E73 54%,#E5326B 100%);
   box-shadow:var(--shadow);
 }
-.hero-photo::after{
-  content:"";position:absolute;left:50%;top:48%;width:90%;height:90%;
-  transform:translate(-50%,-50%);border-radius:50%;
-  background:radial-gradient(circle, rgba(255,90,115,.18), transparent 62%);
+.hero-photo::before{
+  content:"";position:absolute;left:50%;top:5%;width:100%;height:82%;z-index:0;
+  transform:translateX(-50%);
+  background:radial-gradient(58% 56% at 50% 40%, rgba(255,255,255,.45), rgba(255,255,255,.13) 46%, transparent 72%);
 }
 .hero-photo img.real,.about-photo img.real{position:absolute;inset:0;width:100%;height:100%;z-index:1}
-.hero-photo img.real{object-fit:contain;object-position:center bottom;filter:drop-shadow(0 20px 26px rgba(190,55,80,.32))}
-.about-photo img.real{object-fit:cover;object-position:center top;filter:drop-shadow(0 14px 22px rgba(190,55,80,.20))}
+.hero-photo img.real{object-fit:cover;object-position:center top;filter:drop-shadow(0 12px 18px rgba(110,12,42,.4))}
+.about-photo img.real{object-fit:cover;object-position:center top}
 .photo-ph{
   position:absolute;inset:0;display:flex;flex-direction:column;
   align-items:center;justify-content:center;gap:14px;color:rgba(255,255,255,.65);text-align:center;padding:30px;
@@ -166,6 +166,12 @@ section.block{padding:100px 0}
 .about li svg{width:24px;height:24px;flex:none;color:var(--accent)}
 .about li b{display:block}
 .about li span{color:var(--ink-soft);font-size:.96rem}
+.cred-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:32px 28px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:22px}
+.cred-card .cred-item{display:flex;gap:15px;align-items:flex-start}
+.cred-card .ic{width:46px;height:46px;flex:none;border-radius:13px;background:var(--surface);display:grid;place-items:center}
+.cred-card .ic svg{width:24px;height:24px;color:var(--accent)}
+.cred-card .ct b{display:block;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+.cred-card .ct em{display:block;font-style:normal;font-weight:600;font-size:1.04rem;margin-top:3px;color:var(--ink)}
 
 /* ===== Serviços ===== */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -279,17 +285,18 @@ footer{background:var(--plum);color:rgba(255,255,255,.7);padding:60px 0 34px}
   .wrap{padding:0 18px}
   .why-grid{grid-template-columns:1fr}
   .hero{padding:112px 0 48px}
-  .hero h1{font-size:clamp(2rem,8vw,2.85rem);margin:16px 0}
+  .hero h1{font-size:clamp(1.7rem,6.6vw,2.4rem);margin:16px 0}
   .hero p.lead{font-size:1.04rem;margin-bottom:28px}
   .hero-actions{flex-direction:column}
   .hero-actions .btn{width:100%;justify-content:center}
   header{padding:12px 0}
-  .nav-cta{gap:10px}
-  .nav-cta .btn-primary{padding:10px 15px;font-size:.84rem}
+  .nav-cta .btn-primary{display:none}
   .logo{font-size:1rem;gap:9px}
   .logo .mark{width:34px;height:34px;font-size:1.1rem}
-  .hero-stats{gap:18px;justify-content:space-between;width:100%}
+  .hero-stats{gap:14px 24px;justify-content:center}
+  .stat{text-align:center}
   .stat .num{font-size:1.7rem}
+  .stat .lbl{font-size:.78rem}
   .trust .wrap{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
   .trust-item{font-size:.9rem}
   section.block{padding:56px 0}
@@ -374,8 +381,23 @@ footer{background:var(--plum);color:rgba(255,255,255,.7);padding:60px 0 34px}
 <!-- ====================== SOBRE ====================== -->
 <section class="block about" id="sobre">
   <div class="wrap about-grid">
-    <div class="about-photo reveal">
-      <img class="real" src="assets/meyre.png" alt="Meyre Angela, personal trainer">
+    <div class="cred-card reveal">
+      <div class="cred-item">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M22 10 12 5 2 10l10 5 10-5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M6 12.5V17c0 1 2.7 2.4 6 2.4s6-1.4 6-2.4v-4.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+        <div class="ct"><b>Formação</b><em>Educação Física — UFU</em></div>
+      </div>
+      <div class="cred-item">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2 4 6v6c0 5 8 8 8 8s8-3 8-8V6l-8-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="ct"><b>Registro profissional</b><em>CREF 039225-G/MG</em></div>
+      </div>
+      <div class="cred-item">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M7 7h10M7 7 5.5 4.5M17 7l1.5-2.5M8.5 7v3.5a3.5 3.5 0 0 0 7 0V7M12 14v3.5M9 21h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="ct"><b>Especialidades</b><em>Musculação, spinning, hidro e dança fitness</em></div>
+      </div>
+      <div class="cred-item">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.6 2.6 2.6 15.4 0 18M12 3c-2.6 2.6-2.6 15.4 0 18" stroke="currentColor" stroke-width="2"/></svg></span>
+        <div class="ct"><b>Atendimento</b><em>Consultoria online — todo o Brasil</em></div>
+      </div>
     </div>
     <div class="about reveal">
       <span class="eyebrow">Prazer, sou a Meyre</span>
