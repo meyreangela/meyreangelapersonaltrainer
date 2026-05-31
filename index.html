@@ -432,7 +432,7 @@ footer{background:var(--plum);color:rgba(255,255,255,.7);padding:60px 0 34px}
           <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Suporte no WhatsApp</li>
           <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Vídeos dos exercícios</li>
         </ul>
-        <a href="https://wa.me/5534998914319" class="btn btn-ghost">Quero esse</a>
+        <a href="https://wa.me/5534998914319" class="btn btn-ghost">Quero começar</a>
       </div>
 
       <!-- Card 2 (destaque) -->
@@ -447,7 +447,7 @@ footer{background:var(--plum);color:rgba(255,255,255,.7);padding:60px 0 34px}
           <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Reavaliação e ajuste do treino</li>
           <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Melhor custo-benefício</li>
         </ul>
-        <a href="https://wa.me/5534998914319" class="btn btn-light">Quero esse</a>
+        <a href="https://wa.me/5534998914319" class="btn btn-light">Quero começar</a>
       </div>
 
       <!-- Card 3 -->
@@ -461,7 +461,7 @@ footer{background:var(--plum);color:rgba(255,255,255,.7);padding:60px 0 34px}
           <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Reavaliações periódicas</li>
           <li><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Prioridade no atendimento</li>
         </ul>
-        <a href="https://wa.me/5534998914319" class="btn btn-ghost">Quero esse</a>
+        <a href="https://wa.me/5534998914319" class="btn btn-ghost">Quero começar</a>
       </div>
     </div>
   </div>
@@ -609,6 +609,23 @@ const cio=new IntersectionObserver((entries)=>{
   });
 },{threshold:.6});
 countEls.forEach(el=>cio.observe(el));
+
+// WhatsApp: mensagens pré-preenchidas
+(function(){
+  const WA="https://wa.me/5534998914319";
+  const GENERIC="Olá, Meyre! Vim pelo seu site e gostaria de saber mais sobre a consultoria online 😊";
+  document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(a){
+    const card=a.closest('.card');
+    if(card){
+      const h=card.querySelector('h3');
+      if(h){
+        a.href=WA+"?text="+encodeURIComponent("Olá, Meyre! Tenho interesse no Plano "+h.textContent.trim()+" da sua consultoria online. Pode me explicar como funciona? 😊");
+        return;
+      }
+    }
+    a.href=WA+"?text="+encodeURIComponent(GENERIC);
+  });
+})();
 </script>
 </body>
 </html>
