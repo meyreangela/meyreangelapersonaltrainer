@@ -613,13 +613,13 @@ countEls.forEach(el=>cio.observe(el));
 // WhatsApp: mensagens pré-preenchidas
 (function(){
   const WA="https://wa.me/5534998914319";
-  const GENERIC="Olá, Meyre! Gostaria de saber mais sobre a consultoria online 😊";
+  const GENERIC="Olá, Meyre! Gostaria de saber mais sobre a consultoria online.";
   document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function(a){
     const card=a.closest('.card');
     if(card){
       const h=card.querySelector('h3');
       if(h){
-        a.href=WA+"?text="+encodeURIComponent("Olá, Meyre! Tenho interesse no Plano "+h.textContent.trim()+" da sua consultoria online. Pode me explicar como funciona? 😊");
+        a.href=WA+"?text="+encodeURIComponent("Olá, Meyre! Tenho interesse no Plano "+h.textContent.trim()+" da sua consultoria online. Pode me explicar como funciona?");
         return;
       }
     }
