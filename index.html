@@ -112,9 +112,12 @@ header.scrolled{background:rgba(255,251,248,.85);backdrop-filter:blur(12px);box-
 /* foto hero */
 .hero-photo{
   position:relative;border-radius:32px;overflow:hidden;aspect-ratio:4/5;
-  background:linear-gradient(160deg,#2E2238,#3A2B47);
+  background:linear-gradient(160deg,#FF6A5A,#FF3D7F);
   box-shadow:var(--shadow);
 }
+.hero-photo img.real,.about-photo img.real{position:absolute;inset:0;width:100%;height:100%}
+.hero-photo img.real{object-fit:contain;object-position:center bottom}
+.about-photo img.real{object-fit:cover;object-position:center 18%}
 .photo-ph{
   position:absolute;inset:0;display:flex;flex-direction:column;
   align-items:center;justify-content:center;gap:14px;color:rgba(255,255,255,.65);text-align:center;padding:30px;
@@ -247,20 +250,43 @@ footer{background:var(--plum);color:rgba(255,255,255,.7);padding:60px 0 34px}
     transform:translateX(100%);transition:transform .35s ease;box-shadow:var(--shadow);
   }
   .nav-links.open{transform:none}
-  .nav-links a{font-size:1.2rem}
+  .nav-links a{font-size:1.25rem}
   .menu-btn{display:flex}
   .nav-cta .btn-ghost{display:none}
-  .hero-grid,.about-grid{grid-template-columns:1fr;gap:40px}
-  .hero-photo{max-width:420px;margin:0 auto;width:100%}
-  .cards,.why-grid,.steps,.quote-grid{grid-template-columns:1fr}
+  .hero{padding:130px 0 64px}
+  .hero-grid,.about-grid{grid-template-columns:1fr;gap:42px}
+  .hero-copy{text-align:center}
+  .hero .eyebrow{justify-content:center}
+  .hero-actions,.hero-stats{justify-content:center}
+  .hero-photo{max-width:360px;margin:0 auto;width:100%}
+  .head,.head.center{text-align:center;margin-left:auto;margin-right:auto}
+  .cards,.steps,.quote-grid{grid-template-columns:1fr}
   .why-grid{grid-template-columns:1fr 1fr}
   section.block{padding:72px 0}
   .cta-box{padding:54px 28px}
 }
-@media(max-width:560px){
+@media(max-width:600px){
+  .wrap{padding:0 18px}
   .why-grid{grid-template-columns:1fr}
-  .hero-stats{gap:24px}
-  .trust .wrap{justify-content:flex-start}
+  .hero{padding:116px 0 48px}
+  .hero h1{font-size:clamp(2.3rem,8.6vw,3rem)}
+  .hero p.lead{font-size:1.04rem}
+  .hero-actions{flex-direction:column}
+  .hero-actions .btn{width:100%;justify-content:center}
+  .hero-stats{gap:18px;justify-content:space-between;width:100%}
+  .stat .num{font-size:1.7rem}
+  .trust .wrap{justify-content:flex-start;gap:14px 22px}
+  .trust-item{font-size:.9rem}
+  section.block{padding:56px 0}
+  .head{margin-bottom:38px}
+  .card{padding:30px 24px}
+  .cta-box{padding:46px 22px;border-radius:26px}
+  .quote{padding:26px 22px}
+  .wpp{width:54px;height:54px;right:16px;bottom:16px}
+}
+@media(max-width:380px){
+  .hero-stats{flex-direction:column;align-items:center;gap:16px}
+  .logo small{font-size:.58rem}
 }
 </style>
 </head>
@@ -309,11 +335,7 @@ footer{background:var(--plum);color:rgba(255,255,255,.7);padding:60px 0 34px}
     </div>
 
     <div class="hero-photo reveal">
-      <!-- ⬅ EDITAR: troque por <img src="sua-foto.jpg" alt="Meyre"> -->
-      <div class="photo-ph">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M3 7a2 2 0 0 1 2-2h2l1.5-2h7L19 5h2a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" stroke="currentColor" stroke-width="1.5"/><circle cx="13" cy="12" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg>
-        <span>Sua melhor foto treinando entra aqui — de preferência vertical, em alta qualidade.</span>
-      </div>
+      <img class="real" src="assets/meyre.png" alt="Meyre Angela, personal trainer">
       <div class="badge">
         <span class="dot"></span>
         <div><b>Vagas abertas</b><small>Novas consultorias liberadas este mês</small></div>
@@ -336,11 +358,7 @@ footer{background:var(--plum);color:rgba(255,255,255,.7);padding:60px 0 34px}
 <section class="block about" id="sobre">
   <div class="wrap about-grid">
     <div class="about-photo reveal">
-      <!-- ⬅ EDITAR: troque por uma foto sua sorrindo / atendendo -->
-      <div class="photo-ph">
-        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span>Foto da Meyre</span>
-      </div>
+      <img class="real" src="assets/meyre.png" alt="Meyre Angela, personal trainer">
     </div>
     <div class="about reveal">
       <span class="eyebrow">Prazer, sou a Meyre</span>
